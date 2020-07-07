@@ -1,16 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>Rock, paper, scissors game</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
   <script>
+
+    //1 Rock
+    //2 Paper
+    //3 Scissors 
   
   function computerPlay() {
+    let ran = Math.floor(Math.random()*3) + 1;
+    let computerChoose;
+    ran === 1? computerChoose = 'Rock':
+      ran === 2? computerChoose =  'Paper': computerChoose =  'Scissors';
+    return computerChoose;
   }
-    
-	
+
+  function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+    console.log('Player choose: ' + playerSelection);
+    console.log('Computer choose: ' + computerSelection);
+
+    if(playerSelection === computerSelection) {
+      return 'Draw, try again';
+    }else if(playerSelection === 'rock' && computerSelection === 'paper'
+              || playerSelection === 'paper' && computerSelection === 'scissors'
+              || playerSelection === 'scissors' && computerSelection === 'rock') {
+      return `You lose! ${computerSelection} beats ${playerSelection}.`; 
+    }else if(playerSelection === 'rock' && computerSelection === 'scissors'
+              || playerSelection === 'paper' && computerSelection === 'rock'
+              || playerSelection === 'scissors' && computerSelection === 'paper') {
+      return `You win! ${playerSelection} beats ${computerSelection}.`;
+    }    
+  }
+
+  game();
+
+  function game() {
+    let winCount = 0;
+    for(let i=0; i<=5; i++) {
+      playerSelection = prompt("Rock, paper, scissors?");
+      let result = playRound(playerSelection, computerPlay());
+      console.log(result);
+      if(result.includes('win')){
+        winCount++;
+      }
+    }
+    console.log(`You won ${winCount} out of 5 times!`);
+  }
 	
 	
   </script>
