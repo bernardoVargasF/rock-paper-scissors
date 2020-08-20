@@ -1,0 +1,9 @@
+.playerImgs {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 100px;
+}
+.computerChoose {
+    margin: 0 auto;
+    //display: none;
+}
